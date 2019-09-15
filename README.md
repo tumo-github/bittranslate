@@ -12,6 +12,11 @@ App Open Source Bit Translate - Pequeno tradutor de línguas entre inglês e por
 - Dockerfile
 - docker-compose version 3
 
+## Variáveis de ambiente necessária
+```
+export YANDEX_KEY=''
+```
+
 ## Execução:
 
 ```
