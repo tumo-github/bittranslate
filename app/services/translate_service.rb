@@ -23,14 +23,19 @@ class TranslateService
 
   def get_response(lang)
     begin
-      key = "trnsl.1.1.20190912T225007Z.f91bbf10890db4dd.4a9056d8bde53d17921cb5e128cf23933c1cdf9c"
-      url = "https://translate.yandex.net/api/v1.5/tr.json/translate?format=html&lang=#{lang}&text=#{@text}"
+      url    = "https://translate.yandex.net/api/v1.5/tr.json/translate"
+      params = {
+        key:    ENV['YANDEX_KEY'],
+        format: 'html',
+        lang:   lang,
+        text:   @text
+      }
 
-      res = JSON.parse(RestClient.get(url).body)
+      res = JSON.parse(RestClient.post(url, params).body)
 
       res['code'] == 200 ? res['text'].first : return_text_error
     rescue
-      text_error
+      return_text_error
     end
   end
 
