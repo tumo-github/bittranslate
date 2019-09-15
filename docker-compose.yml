@@ -9,3 +9,4 @@ services:
       - '.:/bittranslate'
     environment:
       - LANG=C.UTF-8
+      - YANDEX_KEY=$YANDEX_KEY
