@@ -19,6 +19,9 @@ p 'result'
 p result
 
     params   = result['parameters']
+
+p "params: #{params}"
+p "action: #{result['action']}"
     response = InterpretService.perform(result['action'], params)
 
     content_type :json, charset: 'utf-8'
