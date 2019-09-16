@@ -19,7 +19,7 @@ p 'result'
 p result
 
     params   = result['parameters']
-    response = TranslateService.perform(result['action'], params)
+    response = InterpretService.perform(result['action'], params)
 
     content_type :json, charset: 'utf-8'
     {
