@@ -13,15 +13,15 @@ class App < Sinatra::Base
   post '/webhook' do
     #request.body.rewind
 
-    result = JSON.parse(request.body.read)
-p "result"
-p result
+    #result = JSON.parse(request.body.read)
 
-p "result['queryResult']"
-p result['queryResult']
+    params = if JSON.parse(request.body.read)['queryResult']['contexts'].present?
+      JSON.parse(request.body.read)['queryResult']['contexts']['contexts'][0]['parameters']
+    else
+      JSON.parse(request.body.read)['queryResult']['parameters']
+    end
 
-    params   = result['contexts'].present? ? result['contexts'][0]['parameters'] : result['parameters']
-    response = TranslateService.perform(result['action'], params)
+    response = TranslateService.perform(JSON.parse(request.body.read)['queryResult']['action'], params)
 
     content_type :json, charset: 'utf-8'
     {
