@@ -14,7 +14,7 @@ class App < Sinatra::Base
     request.body.rewind
 p "request.body.read"
 p request.body.read
-    result = request.body.read['queryResult']
+    result = JSON.parse(request.body.read)['queryResult']
 p "result"
 p result
 
