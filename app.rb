@@ -15,7 +15,7 @@ class App < Sinatra::Base
 
     #result = JSON.parse(request.body.read)
 
-    params = if JSON.parse(request.body.read)['queryResult']['contexts'].present?
+    params = if JSON.parse(request.body.read)['queryResult']['contexts']
       JSON.parse(request.body.read)['queryResult']['contexts']['contexts'][0]['parameters']
     else
       JSON.parse(request.body.read)['queryResult']['parameters']
