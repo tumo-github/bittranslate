@@ -12,8 +12,7 @@ class App < Sinatra::Base
 
   post '/webhook' do
     request.body.rewind
-p "request.body.read"
-p request.body.read
+
     result = JSON.parse(request.body.read)['queryResult']
 p "result"
 p result
