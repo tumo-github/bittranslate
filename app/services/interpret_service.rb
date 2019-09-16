@@ -2,6 +2,7 @@ class InterpretService
 
   def self.perform(action, params)
     case action
+    when 'help'  then HelpService.perform
     when 'en-pt' then TranslateService.new(params['text']).to_pt
     when 'pt-en' then TranslateService.new(params['text']).to_en
     else
