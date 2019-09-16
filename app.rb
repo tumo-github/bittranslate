@@ -11,7 +11,7 @@ class App < Sinatra::Base
   end
 
   post '/webhook' do
-p request.POST.keys
+p request.POST
 
     request.body.rewind
 
